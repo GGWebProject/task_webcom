@@ -181,9 +181,57 @@
         <section class="feedback">
             <h3 class="wave">оставьте отзыв</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
+            <div class="text-block">
+                <address>
+                    <span>наш адрес</span><br>
+                    г.Минск, ул. Скрыганова, 6А, 4 этаж <br>
+                    <span>звоните</span><br>
+                    +375 (29) 123-45-67,  +375 (33) 123-45-67 <br>
+                    <span>пишите</span><br>
+                    info@promo-webcom.by
+                </address>
+                <form action="" method="post">
+                    <label for="name">ваше имя</label> <br>
+                    <input type="text" id="name" name="имя клиента" required placeholder="Иванов Иван" pattern="^[A-Za-zА-Яа-яЁё\s]+$"><br>
+                    <label for="mail">e-mail</label><br>
+                    <input type="email" id="mail" name="почта клиента" required placeholder="example@mysite.com"><br>
+                    <label for="prof">ваша должность</label><br>
+                    <input type="text" id="prof" name="профессия клиента" required placeholder="Должность" pattern="^[A-Za-zА-Яа-яЁё\s]+$"><br>
+                    <label for="fb">Отзыв</label><br>
+                    <textarea id="fb" name="отзыв клиента" placeholder="Ваше сообщение" rows="5"></textarea><br>
+                    <input type="file" id="photo" name="фотография клиента" required style="display: none">
+                    <label for="photo"></label><span class="photo-name">фото</span><br>
+                    <label for="recapch">введите код с картинки</label><br>
+                    <input type="text" id="recapch" required>
+                    <img src="img/capch.jpg" alt="" class="capch">
+                    <input type="submit" value="ОТПРАВИТЬ">
+                </form>
+            </div>
         </section>
     </main>
-    <footer></footer>
+    <footer>
+        <div class="footer-inf">
+            <div class="inf">
+                <div class="discl wave">
+                    <img src="img/logo.png" alt="Webcom Media">
+                    <span>Дисклеймер компании</span>
+                </div>
+                <div class="social wave">
+                    <h5>мы в соцсетях</h5>
+                    <div class="soc_link">
+                        <a href="#" target="_blank"><img src="img/insta_ico.png" alt="instagram"></a>
+                        <a href="#" target="_blank"><img src="img/twitter_ico.png" alt="twitter"></a>
+                        <a href="#" target="_blank"><img src="img/facebook_ico.png" alt="facebook"></a>
+                    </div>
+                </div>
+                <div class="location wave">
+                    <h5>адрес</h5>
+                    <span>г. Минск, ул. Скрыганова, 6А,<br>4 этаж</span>
+                </div>
+            </div>
+        </div>
+        <div class="copy">Copyrights 2015 &#169 Webcom Media </div>
+    </footer>
     <script defer src="libs/jquery/dist/jquery.min.js"></script>
     <script defer src="download/OwlCarousel/dist/owl.carousel.js"></script>
     <script defer src="js/common.js"></script>

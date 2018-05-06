@@ -14,6 +14,21 @@ h2, h3, h4, h5 {
   text-transform: uppercase;
   text-align: center; }
 
+h2, h4, h5 {
+  font-weight: bold; }
+
+.wave {
+  position: relative; }
+  .wave:after {
+    position: absolute;
+    content: url("../img/wave.png");
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    height: 6px;
+    width: 31px; }
+
 header {
   display: flex;
   height: 120px;
@@ -215,7 +230,10 @@ main {
         width: 400px;
         height: 80px;
         line-height: 80px;
-        border-radius: 8px; }
+        border-radius: 8px;
+        transition: background-color .3s; }
+        main .slider .owl-carousel a:hover {
+          background-color: #ce7307; }
   main section {
     text-align: center;
     padding: 60px 0; }
@@ -231,17 +249,6 @@ main {
       width: 845px;
       display: inline-block;
       margin: 60px 0; }
-    main section .wave {
-      position: relative; }
-      main section .wave:after {
-        position: absolute;
-        content: url("../img/wave.png");
-        bottom: 0px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: block;
-        height: 6px;
-        width: 31px; }
   main .works {
     border-bottom: 2px solid #b5c4c4;
     background-image: url("../img/our_work_bg.jpg");
@@ -313,8 +320,211 @@ main {
         margin: 60px 55px 0; }
         main .reasons .reas-block .item h5 {
           font-size: 16px;
-          margin: 30px 0 15px; }
+          margin: 30px 0 15px;
+          letter-spacing: 1px; }
         main .reasons .reas-block .item span {
           font-size: 16px;
           line-height: 30px;
           color: #8198a0; }
+  main .feedback .text-block {
+    max-width: 940px;
+    margin: 0 auto;
+    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: left; }
+    main .feedback .text-block address {
+      min-width: 320px;
+      color: #999999;
+      font-style: normal;
+      font-size: 18px; }
+      main .feedback .text-block address span {
+        font-size: 24px;
+        text-transform: uppercase;
+        color: #ff8207;
+        display: inline-block;
+        margin: 25px 0 10px;
+        font-weight: bold; }
+        main .feedback .text-block address span:nth-of-type(1) {
+          margin-top: 0; }
+    main .feedback .text-block form {
+      min-width: 540px;
+      overflow: hidden;
+      font-size: 0px; }
+      main .feedback .text-block form br {
+        line-height: 0px; }
+      main .feedback .text-block form label {
+        text-transform: uppercase;
+        color: #28363d;
+        font-size: 24px;
+        font-weight: bold;
+        display: inline-block;
+        margin: 10px 0 5px; }
+        main .feedback .text-block form label:nth-of-type(1) {
+          margin-top: 0; }
+      main .feedback .text-block form input {
+        width: 100%;
+        border: none;
+        font-size: 18px; }
+      main .feedback .text-block form input[type='text'], main .feedback .text-block form input[type='email'] {
+        border: none;
+        display: block;
+        overflow: hidden;
+        line-height: 24px;
+        background-image: linear-gradient(to bottom, transparent, transparent 23px, #e5e5e5 0);
+        background-repeat: repeat-y;
+        background-color: transparent;
+        background-size: 100% 24px; }
+      main .feedback .text-block form input::-webkit-input-placeholder {
+        font-style: italic;
+        color: #c0c0c0; }
+      main .feedback .text-block form input::-moz-placeholder {
+        font-style: italic;
+        color: #c0c0c0; }
+      main .feedback .text-block form input:-moz-placeholder {
+        font-style: italic;
+        color: #c0c0c0; }
+      main .feedback .text-block form input:-ms-input-placeholder {
+        font-style: italic;
+        color: #c0c0c0; }
+      main .feedback .text-block form label[for="photo"] {
+        display: inline-block;
+        width: 50px;
+        height: 60px;
+        background-color: #ff8207;
+        border-radius: 8px;
+        position: relative;
+        cursor: pointer;
+        margin: 16px 15px 5px 0;
+        transition: background-color .3s; }
+        main .feedback .text-block form label[for="photo"]:hover {
+          background-color: #ce7307; }
+        main .feedback .text-block form label[for="photo"]:after, main .feedback .text-block form label[for="photo"]:before {
+          content: "";
+          position: absolute;
+          background-color: #fff;
+          top: 50%;
+          left: 50%; }
+        main .feedback .text-block form label[for="photo"]:after {
+          width: 16px;
+          height: 2px;
+          transform: translate(-50%, -50%); }
+        main .feedback .text-block form label[for="photo"]:before {
+          width: 2px;
+          height: 16px;
+          transform: translate(-50%, -50%); }
+      main .feedback .text-block form .photo-name {
+        text-transform: uppercase;
+        color: #28363d;
+        font-size: 24px;
+        font-weight: bold;
+        display: inline-block;
+        height: 60px;
+        max-width: 425px;
+        line-height: 60px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 16px 0 5px; }
+      main .feedback .text-block form textarea::-webkit-input-placeholder {
+        font-style: italic;
+        color: #c0c0c0; }
+      main .feedback .text-block form textarea::-moz-placeholder {
+        font-style: italic;
+        color: #c0c0c0; }
+      main .feedback .text-block form textarea:-moz-placeholder {
+        font-style: italic;
+        color: #c0c0c0; }
+      main .feedback .text-block form textarea:-ms-input-placeholder {
+        font-style: italic;
+        color: #c0c0c0; }
+      main .feedback .text-block form textarea {
+        resize: none;
+        width: 100%;
+        border: none;
+        display: block;
+        font-size: 18px;
+        overflow: hidden;
+        line-height: 24px;
+        background-image: linear-gradient(to bottom, transparent, transparent 23px, #e5e5e5 0);
+        background-repeat: repeat-y;
+        background-color: transparent;
+        background-size: 100% 24px; }
+      main .feedback .text-block form #recapch {
+        max-width: 300px; }
+      main .feedback .text-block form img {
+        float: left;
+        margin-top: 35px; }
+      main .feedback .text-block form input[type='submit'] {
+        display: inline-block;
+        width: 220px;
+        height: 60px;
+        background-color: #ff8207;
+        color: #ffffff;
+        border-radius: 8px;
+        float: right;
+        margin-top: 15px;
+        cursor: pointer;
+        transition: background-color .3s; }
+        main .feedback .text-block form input[type='submit']:hover {
+          background-color: #ce7307; }
+
+footer {
+  font-size: 0px;
+  color: #ffffff; }
+  footer .footer-inf {
+    background-image: url("../img/footer_bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center; }
+  footer .inf {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1400px;
+    height: 250px;
+    margin: 0 auto; }
+  footer .wave:after {
+    top: 60px;
+    bottom: auto; }
+  footer span {
+    font-size: 14px; }
+  footer h5 {
+    font-size: 16px;
+    color: white;
+    margin: 0; }
+  footer .discl, footer .location, footer .social {
+    margin-top: 70px; }
+    footer .discl div, footer .discl span, footer .location div, footer .location span, footer .social div, footer .social span {
+      position: absolute;
+      top: 86px;
+      left: 0;
+      width: 100%; }
+  footer .discl, footer .location {
+    width: 230px; }
+  footer .social {
+    text-align: center;
+    width: 140px; }
+    footer .social .soc_link {
+      display: flex;
+      justify-content: space-around; }
+  footer .discl {
+    text-align: left; }
+    footer .discl.wave:after {
+      left: 0;
+      transform: translateX(0); }
+  footer .location {
+    text-align: right; }
+    footer .location.wave:after {
+      left: auto;
+      right: 0;
+      transform: translateX(0); }
+    footer .location h5 {
+      text-align: right; }
+  footer .copy {
+    height: 60px;
+    border-bottom: 2px solid #ff8207;
+    background-color: #1e292f;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 60px;
+    text-align: center;
+    font-size: 14px; }

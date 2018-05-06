@@ -4,7 +4,8 @@
   font-style: normal
   src: url(../fonts/Open_sans/OpenSans-Regular.ttf)
 
-$main_color: #ff8207 // основной цвет
+$main_color: #ff8207
+// основной цвет
 $main_color-text: rgba(40, 54, 61, 1)
 //основной цвет текста
 
@@ -18,6 +19,21 @@ h2, h3, h4, h5
   color: $main_color-text
   text-transform: uppercase
   text-align: center
+h2, h4, h5
+  font-weight: bold
+
+// подчеркивание волной
+.wave
+  position: relative
+  &:after
+    position: absolute
+    content: url("../img/wave.png")
+    bottom: 0px
+    left: 50%
+    transform: translateX(-50%)
+    display: block
+    height: 6px
+    width: 31px
 
 header
   display: flex
@@ -226,6 +242,9 @@ main
         height: 80px
         line-height: 80px
         border-radius: 8px
+        transition: background-color .3s
+        &:hover
+          background-color: rgb(206, 115, 7)
 
   section
     text-align: center
@@ -242,18 +261,6 @@ main
       width: 845px
       display: inline-block
       margin: 60px 0
-    .wave
-      position: relative
-      &:after
-        position: absolute
-        content: url("../img/wave.png")
-        bottom: 0px
-        left: 50%
-        transform: translateX(-50%)
-        display: block
-        height: 6px
-        width: 31px
-
   .works
     border-bottom: 2px solid #b5c4c4
     background-image: url("../img/our_work_bg.jpg")
@@ -328,8 +335,217 @@ main
         h5
           font-size: 16px
           margin: 30px 0 15px
+          letter-spacing: 1px
         span
           font-size: 16px
           line-height: 30px
           color: #8198a0
+  .feedback
+    .text-block
+      max-width: 940px
+      margin: 0 auto
+      justify-content: space-between
+      display: flex
+      flex-wrap: wrap
+      text-align: left
+      address
+        min-width: 320px
+        color: #999999
+        font-style: normal
+        font-size: 18px
+        span
+          font-size: 24px
+          text-transform: uppercase
+          color: $main_color
+          display: inline-block
+          margin: 25px 0 10px
+          font-weight: bold
+          &:nth-of-type(1)
+            margin-top: 0
+
+      form
+        min-width: 540px
+        overflow: hidden
+        font-size: 0px
+        br
+          line-height: 0px
+        label
+          text-transform: uppercase
+          color: $main_color-text
+          font-size: 24px
+          font-weight: bold
+          display: inline-block
+          margin: 10px 0 5px
+          &:nth-of-type(1)
+            margin-top: 0
+        input
+          width: 100%
+          border: none
+          font-size: 18px
+        input[type='text'], input[type='email']
+          border: none
+          display: block
+          overflow: hidden
+          line-height: 24px
+          background-image: linear-gradient(to bottom, transparent,  transparent 23px, #e5e5e5 0)
+          background-repeat: repeat-y
+          background-color: transparent
+          background-size: 100% 24px
+        input::-webkit-input-placeholder
+          font-style: italic
+          color: #c0c0c0
+        input::-moz-placeholder
+          font-style: italic
+          color: #c0c0c0
+        input:-moz-placeholder
+          font-style: italic
+          color: #c0c0c0
+        input:-ms-input-placeholder
+          font-style: italic
+          color: #c0c0c0
+        label[for="photo"]
+          display: inline-block
+          width: 50px
+          height: 60px
+          background-color: $main_color
+          border-radius: 8px
+          position: relative
+          cursor: pointer
+          margin: 16px 15px 5px 0
+          transition: background-color .3s
+          &:hover
+            background-color: rgb(206, 115, 7)
+          &:after, &:before
+            content: ""
+            position: absolute
+            background-color: #fff
+            top: 50%
+            left: 50%
+          &:after
+            width: 16px
+            height: 2px
+            transform: translate(-50%, -50%)
+          &:before
+            width: 2px
+            height: 16px
+            transform: translate(-50%, -50%)
+        .photo-name
+          text-transform: uppercase
+          color: $main_color-text
+          font-size: 24px
+          font-weight: bold
+          display: inline-block
+          height: 60px
+          max-width: 425px
+          line-height: 60px
+          overflow: hidden
+          text-overflow: ellipsis
+          margin: 16px 0 5px
+        textarea::-webkit-input-placeholder
+          font-style: italic
+          color: #c0c0c0
+        textarea::-moz-placeholder
+          font-style: italic
+          color: #c0c0c0
+        textarea:-moz-placeholder
+          font-style: italic
+          color: #c0c0c0
+        textarea:-ms-input-placeholder
+          font-style: italic
+          color: #c0c0c0
+        textarea
+          resize: none
+          width: 100%
+          border: none
+          display: block
+          font-size: 18px
+          overflow: hidden
+          line-height: 24px
+          background-image: linear-gradient(to bottom, transparent,  transparent 23px, #e5e5e5 0)
+          background-repeat: repeat-y
+          background-color: transparent
+          background-size: 100% 24px
+        #recapch
+          max-width: 300px
+        img
+          float: left
+          margin-top: 35px
+
+        input[type='submit']
+          display: inline-block
+          width: 220px
+          height: 60px
+          background-color: $main_color
+          color: #ffffff
+          border-radius: 8px
+          float: right
+          margin-top: 15px
+          cursor: pointer
+          transition: background-color .3s
+          &:hover
+            background-color: rgb(206, 115, 7)
+footer
+  font-size: 0px
+  color: #ffffff
+  .footer-inf
+    background-image: url("../img/footer_bg.jpg")
+    background-repeat: no-repeat
+    background-size: cover
+    background-position: top center
+  .inf
+    display: flex
+    justify-content: space-between
+    max-width: 1400px
+    height: 250px
+    margin: 0 auto
+  .wave
+    &:after
+      top: 60px
+      bottom: auto
+  span
+    font-size: 14px
+  h5
+    font-size: 16px
+    color: white
+    margin: 0
+  .discl,.location,.social
+    margin-top: 70px
+    div, span
+      position: absolute
+      top: 86px
+      left: 0
+      width: 100%
+  .discl,.location
+    width: 230px
+  .social
+    text-align: center
+    width: 140px
+    .soc_link
+      display: flex
+      justify-content: space-around
+  .discl
+    text-align: left
+    &.wave
+      &:after
+        left: 0
+        transform: translateX(0)
+  .location
+    text-align: right
+    &.wave
+      &:after
+        left: auto
+        right: 0
+        transform: translateX(0)
+    h5
+      text-align: right
+  .copy
+    height: 60px
+    border-bottom: 2px solid $main_color
+    background-color: #1e292f
+    color: #fff
+    text-transform: uppercase
+    line-height: 60px
+    text-align: center
+    font-size: 14px
+
 
