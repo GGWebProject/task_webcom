@@ -17,6 +17,22 @@ h2, h3, h4, h5 {
 h2, h4, h5 {
   font-weight: bold; }
 
+.scrollbar {
+  position: fixed;
+  right: 20px;
+  top: calc(50% + 60px);
+  transform: translateY(-50%);
+  z-index: 10; }
+  .scrollbar a {
+    display: block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #a5abae;
+    margin: 5px 0; }
+    .scrollbar a.active {
+      background-color: #ff8207; }
+
 .wave {
   position: relative; }
   .wave:after {
@@ -37,7 +53,9 @@ header {
   justify-content: center;
   position: fixed;
   width: 100%;
-  z-index: 10; }
+  z-index: 10;
+  transition: all .3s;
+  overflow: hidden; }
   header nav {
     font-size: 0px;
     margin-left: 49px; }
@@ -50,7 +68,7 @@ header {
       position: relative;
       width: 140px;
       text-align: center;
-      transition: background-color .5s;
+      transition: all .3s;
       margin-left: 20px; }
       header nav a:after {
         content: "";
@@ -60,24 +78,64 @@ header {
         background-color: transparent;
         bottom: 0px;
         left: 0px;
-        transition: background-color .5s; }
+        transition: background-color .3s; }
       header nav a:focus {
         background-color: #1e292f; }
         header nav a:focus:after {
           background-color: #ff8207; }
       header nav a:hover:after {
         background-color: #ff8207; }
-  header .phones {
+  header .contact {
     display: flex;
     flex-direction: column;
-    height: calc(100% - 60px);
+    height: 100%;
     justify-content: space-between; }
-    header .phones a {
+    header .contact .phones {
+      display: flex;
+      flex-direction: column;
+      height: 60px;
+      justify-content: space-between;
+      margin: auto 0;
+      transform: translateY(0px);
+      transition: all .3s;
+      width: 230px; }
+      header .contact .phones a {
+        color: #ff8207;
+        font-weight: bold; }
+    header .contact .link-modal {
+      text-transform: uppercase;
+      font-size: 16px;
+      display: none;
+      width: 200px;
+      height: 40px;
+      box-sizing: border-box;
+      border: 2px solid #ff8207;
       color: #ff8207;
-      font-weight: bold; }
+      border-radius: 8px;
+      text-align: center;
+      line-height: 36px;
+      margin: auto 15px;
+      transition: background-color .3s, color .3s; }
+      header .contact .link-modal:hover {
+        background-color: #ff8207;
+        color: #ffffff; }
+  header.header-scroll {
+    height: 80px; }
+    header.header-scroll nav a {
+      line-height: 80px; }
+    header.header-scroll .contact {
+      justify-content: center;
+      height: 100%; }
+      header.header-scroll .contact .phones {
+        margin: auto 0;
+        transform: translateY(-100px);
+        display: none; }
+      header.header-scroll .contact .link-modal {
+        display: inline-block; }
 
 main {
-  padding-top: 120px; }
+  padding-top: 120px;
+  transition: padding-top .3s; }
   main .slider {
     padding: 0px;
     height: calc(100vh - 120px);
@@ -326,147 +384,195 @@ main {
           font-size: 16px;
           line-height: 30px;
           color: #8198a0; }
-  main .feedback .text-block {
-    max-width: 940px;
-    margin: 0 auto;
-    justify-content: space-between;
-    display: flex;
-    flex-wrap: wrap;
-    text-align: left; }
-    main .feedback .text-block address {
-      min-width: 320px;
-      color: #999999;
-      font-style: normal;
-      font-size: 18px; }
-      main .feedback .text-block address span {
-        font-size: 24px;
-        text-transform: uppercase;
-        color: #ff8207;
-        display: inline-block;
-        margin: 25px 0 10px;
-        font-weight: bold; }
-        main .feedback .text-block address span:nth-of-type(1) {
-          margin-top: 0; }
-    main .feedback .text-block form {
-      min-width: 540px;
-      overflow: hidden;
-      font-size: 0px; }
-      main .feedback .text-block form br {
-        line-height: 0px; }
-      main .feedback .text-block form label {
-        text-transform: uppercase;
-        color: #28363d;
-        font-size: 24px;
-        font-weight: bold;
-        display: inline-block;
-        margin: 10px 0 5px; }
-        main .feedback .text-block form label:nth-of-type(1) {
-          margin-top: 0; }
-      main .feedback .text-block form input {
-        width: 100%;
-        border: none;
+  main .feedback {
+    padding-bottom: 100px; }
+    main .feedback .text-block {
+      max-width: 940px;
+      padding: 0 230px;
+      margin: 0 auto;
+      justify-content: space-between;
+      display: flex;
+      flex-wrap: wrap;
+      text-align: left;
+      position: relative; }
+      main .feedback .text-block .to-top {
+        position: absolute;
+        bottom: -91px;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 60px;
+        box-sizing: border-box;
+        border: 3px solid #ff8207;
+        border-radius: 8px;
+        visibility: hidden;
+        opacity: 0;
+        transition: .3s; }
+        main .feedback .text-block .to-top.visible {
+          visibility: visible;
+          opacity: 1; }
+        main .feedback .text-block .to-top .ar {
+          height: 40px;
+          width: 4px;
+          background-color: #ff8207;
+          border-radius: 2px;
+          display: inline-block;
+          line-height: 56px;
+          position: relative; }
+          main .feedback .text-block .to-top .ar:after, main .feedback .text-block .to-top .ar:before {
+            background-color: #ff8207;
+            content: "";
+            position: absolute;
+            display: block;
+            width: 4px;
+            height: 20px;
+            border-radius: 2px;
+            top: 0;
+            transform-origin: center top; }
+          main .feedback .text-block .to-top .ar:before {
+            transform: rotate(-45deg);
+            left: -1px; }
+          main .feedback .text-block .to-top .ar:after {
+            left: 1px;
+            transform: rotate(45deg); }
+      main .feedback .text-block address {
+        min-width: 320px;
+        color: #999999;
+        font-style: normal;
         font-size: 18px; }
-      main .feedback .text-block form input[type='text'], main .feedback .text-block form input[type='email'] {
-        border: none;
-        display: block;
+        main .feedback .text-block address span {
+          font-size: 24px;
+          text-transform: uppercase;
+          color: #ff8207;
+          display: inline-block;
+          margin: 11px 0 9px;
+          font-weight: bold; }
+          main .feedback .text-block address span:nth-of-type(1) {
+            margin-top: 0; }
+      main .feedback .text-block form {
+        min-width: 540px;
         overflow: hidden;
-        line-height: 24px;
-        background-image: linear-gradient(to bottom, transparent, transparent 23px, #e5e5e5 0);
-        background-repeat: repeat-y;
-        background-color: transparent;
-        background-size: 100% 24px; }
-      main .feedback .text-block form input::-webkit-input-placeholder {
-        font-style: italic;
-        color: #c0c0c0; }
-      main .feedback .text-block form input::-moz-placeholder {
-        font-style: italic;
-        color: #c0c0c0; }
-      main .feedback .text-block form input:-moz-placeholder {
-        font-style: italic;
-        color: #c0c0c0; }
-      main .feedback .text-block form input:-ms-input-placeholder {
-        font-style: italic;
-        color: #c0c0c0; }
-      main .feedback .text-block form label[for="photo"] {
-        display: inline-block;
-        width: 50px;
-        height: 60px;
-        background-color: #ff8207;
-        border-radius: 8px;
-        position: relative;
-        cursor: pointer;
-        margin: 16px 15px 5px 0;
-        transition: background-color .3s; }
-        main .feedback .text-block form label[for="photo"]:hover {
-          background-color: #ce7307; }
-        main .feedback .text-block form label[for="photo"]:after, main .feedback .text-block form label[for="photo"]:before {
-          content: "";
-          position: absolute;
-          background-color: #fff;
-          top: 50%;
-          left: 50%; }
-        main .feedback .text-block form label[for="photo"]:after {
-          width: 16px;
-          height: 2px;
-          transform: translate(-50%, -50%); }
-        main .feedback .text-block form label[for="photo"]:before {
-          width: 2px;
-          height: 16px;
-          transform: translate(-50%, -50%); }
-      main .feedback .text-block form .photo-name {
-        text-transform: uppercase;
-        color: #28363d;
-        font-size: 24px;
-        font-weight: bold;
-        display: inline-block;
-        height: 60px;
-        max-width: 425px;
-        line-height: 60px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        margin: 16px 0 5px; }
-      main .feedback .text-block form textarea::-webkit-input-placeholder {
-        font-style: italic;
-        color: #c0c0c0; }
-      main .feedback .text-block form textarea::-moz-placeholder {
-        font-style: italic;
-        color: #c0c0c0; }
-      main .feedback .text-block form textarea:-moz-placeholder {
-        font-style: italic;
-        color: #c0c0c0; }
-      main .feedback .text-block form textarea:-ms-input-placeholder {
-        font-style: italic;
-        color: #c0c0c0; }
-      main .feedback .text-block form textarea {
-        resize: none;
-        width: 100%;
-        border: none;
-        display: block;
-        font-size: 18px;
-        overflow: hidden;
-        line-height: 24px;
-        background-image: linear-gradient(to bottom, transparent, transparent 23px, #e5e5e5 0);
-        background-repeat: repeat-y;
-        background-color: transparent;
-        background-size: 100% 24px; }
-      main .feedback .text-block form #recapch {
-        max-width: 300px; }
-      main .feedback .text-block form img {
-        float: left;
-        margin-top: 35px; }
-      main .feedback .text-block form input[type='submit'] {
-        display: inline-block;
-        width: 220px;
-        height: 60px;
-        background-color: #ff8207;
-        color: #ffffff;
-        border-radius: 8px;
-        float: right;
-        margin-top: 15px;
-        cursor: pointer;
-        transition: background-color .3s; }
-        main .feedback .text-block form input[type='submit']:hover {
-          background-color: #ce7307; }
+        font-size: 0px; }
+        main .feedback .text-block form br {
+          line-height: 0px; }
+        main .feedback .text-block form label {
+          text-transform: uppercase;
+          color: #28363d;
+          font-size: 24px;
+          font-weight: bold;
+          display: inline-block;
+          margin: 10px 0 5px; }
+          main .feedback .text-block form label:nth-of-type(1) {
+            margin-top: 0; }
+        main .feedback .text-block form input {
+          width: 100%;
+          border: none;
+          font-size: 18px; }
+        main .feedback .text-block form input[type='text'], main .feedback .text-block form input[type='email'] {
+          border: none;
+          display: block;
+          overflow: hidden;
+          line-height: 24px;
+          background-image: linear-gradient(to bottom, transparent, transparent 23px, #e5e5e5 0);
+          background-repeat: repeat-y;
+          background-color: transparent;
+          background-size: 100% 24px; }
+        main .feedback .text-block form input::-webkit-input-placeholder {
+          font-style: italic;
+          color: #c0c0c0; }
+        main .feedback .text-block form input::-moz-placeholder {
+          font-style: italic;
+          color: #c0c0c0; }
+        main .feedback .text-block form input:-moz-placeholder {
+          font-style: italic;
+          color: #c0c0c0; }
+        main .feedback .text-block form input:-ms-input-placeholder {
+          font-style: italic;
+          color: #c0c0c0; }
+        main .feedback .text-block form label[for="photo"] {
+          display: inline-block;
+          width: 50px;
+          height: 60px;
+          background-color: #ff8207;
+          border-radius: 8px;
+          position: relative;
+          cursor: pointer;
+          margin: 16px 15px 5px 0;
+          transition: background-color .3s; }
+          main .feedback .text-block form label[for="photo"]:hover {
+            background-color: #ce7307; }
+          main .feedback .text-block form label[for="photo"]:after, main .feedback .text-block form label[for="photo"]:before {
+            content: "";
+            position: absolute;
+            background-color: #fff;
+            top: 50%;
+            left: 50%; }
+          main .feedback .text-block form label[for="photo"]:after {
+            width: 16px;
+            height: 2px;
+            transform: translate(-50%, -50%); }
+          main .feedback .text-block form label[for="photo"]:before {
+            width: 2px;
+            height: 16px;
+            transform: translate(-50%, -50%); }
+        main .feedback .text-block form .photo-name {
+          text-transform: uppercase;
+          color: #28363d;
+          font-size: 24px;
+          font-weight: bold;
+          display: inline-block;
+          height: 60px;
+          max-width: 425px;
+          line-height: 60px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          margin: 16px 0 5px; }
+        main .feedback .text-block form textarea::-webkit-input-placeholder {
+          font-style: italic;
+          color: #c0c0c0; }
+        main .feedback .text-block form textarea::-moz-placeholder {
+          font-style: italic;
+          color: #c0c0c0; }
+        main .feedback .text-block form textarea:-moz-placeholder {
+          font-style: italic;
+          color: #c0c0c0; }
+        main .feedback .text-block form textarea:-ms-input-placeholder {
+          font-style: italic;
+          color: #c0c0c0; }
+        main .feedback .text-block form textarea {
+          resize: none;
+          width: 100%;
+          border: none;
+          display: block;
+          font-size: 18px;
+          overflow: hidden;
+          line-height: 24px;
+          background-image: linear-gradient(to bottom, transparent, transparent 23px, #e5e5e5 0);
+          background-repeat: repeat-y;
+          background-color: transparent;
+          background-size: 100% 24px; }
+        main .feedback .text-block form #recapch {
+          max-width: 300px; }
+        main .feedback .text-block form img {
+          float: left;
+          margin-top: 35px; }
+        main .feedback .text-block form input[type='submit'] {
+          display: inline-block;
+          width: 220px;
+          height: 60px;
+          background-color: #ff8207;
+          color: #ffffff;
+          border-radius: 8px;
+          float: right;
+          margin-top: 15px;
+          cursor: pointer;
+          transition: background-color .3s; }
+          main .feedback .text-block form input[type='submit']:hover {
+            background-color: #ce7307; }
+  main.main-scroll {
+    padding-top: 60px; }
 
 footer {
   font-size: 0px;
