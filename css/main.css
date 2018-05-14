@@ -86,26 +86,30 @@ header {
       header nav a:hover:after {
         background-color: #ff8207; }
   header .contact {
-    display: flex;
-    flex-direction: column;
+    display: block;
     height: 100%;
-    justify-content: space-between; }
+    min-width: 230px;
+    position: relative;
+    overflow: hidden; }
     header .contact .phones {
       display: flex;
       flex-direction: column;
-      height: 60px;
       justify-content: space-between;
-      margin: auto 0;
-      transform: translateY(0px);
-      transition: all .3s;
-      width: 230px; }
+      height: 60px;
+      width: 230px;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      transition: transform .3s;
+      transition-delay: .3s; }
       header .contact .phones a {
         color: #ff8207;
         font-weight: bold; }
     header .contact .link-modal {
       text-transform: uppercase;
       font-size: 16px;
-      display: none;
+      display: block;
       width: 200px;
       height: 40px;
       box-sizing: border-box;
@@ -114,8 +118,12 @@ header {
       border-radius: 8px;
       text-align: center;
       line-height: 36px;
-      margin: auto 15px;
-      transition: background-color .3s, color .3s; }
+      margin: 0 15px;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transition: background-color .3s, color .3s, transform .3s;
+      transform: translateY(150%); }
       header .contact .link-modal:hover {
         background-color: #ff8207;
         color: #ffffff; }
@@ -123,15 +131,14 @@ header {
     height: 80px; }
     header.header-scroll nav a {
       line-height: 80px; }
-    header.header-scroll .contact {
-      justify-content: center;
-      height: 100%; }
-      header.header-scroll .contact .phones {
-        margin: auto 0;
-        transform: translateY(-100px);
-        display: none; }
-      header.header-scroll .contact .link-modal {
-        display: inline-block; }
+    header.header-scroll .contact .phones {
+      transform: translateY(-200%);
+      transition-delay: .0s;
+      transition-property: transform; }
+    header.header-scroll .contact .link-modal {
+      transition-delay: .3s, 0s, 0s;
+      transition-property: transform, background-color, color;
+      transform: translateY(-50%); }
 
 main {
   padding-top: 120px;
@@ -469,7 +476,8 @@ main {
         main .feedback .text-block form input {
           width: 100%;
           border: none;
-          font-size: 18px; }
+          font-size: 18px;
+          outline: none; }
         main .feedback .text-block form input[type='text'], main .feedback .text-block form input[type='email'] {
           border: none;
           display: block;
@@ -543,6 +551,7 @@ main {
           color: #c0c0c0; }
         main .feedback .text-block form textarea {
           resize: none;
+          outline: none;
           width: 100%;
           border: none;
           display: block;

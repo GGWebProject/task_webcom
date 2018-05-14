@@ -1,4 +1,6 @@
 $(document).ready(function(){
+    chengeHeader();
+
     $(".owl-carousel").owlCarousel({
         items: 1,
         loop: true,

@@ -93,19 +93,23 @@ header
         &:after
           background-color: $main_color
   .contact
-    display: flex
-    flex-direction: column
+    display: block
     height: 100%
-    justify-content: space-between
+    min-width: 230px
+    position: relative
+    overflow: hidden
     .phones
       display: flex
       flex-direction: column
-      height: 60px
       justify-content: space-between
-      margin: auto 0
-      transform: translateY(0px)
-      transition: all .3s
+      height: 60px
       width: 230px
+      position: absolute
+      top: 50%
+      left: 0
+      transform: translateY(-50%)
+      transition: transform .3s
+      transition-delay: .3s
       a
         color: $main_color
         font-weight: bold
@@ -113,7 +117,7 @@ header
     .link-modal
       text-transform: uppercase
       font-size: 16px
-      display: none
+      display: block
       width: 200px
       height: 40px
       box-sizing: border-box
@@ -122,8 +126,12 @@ header
       border-radius: 8px
       text-align: center
       line-height: 36px
-      margin: auto 15px
-      transition: background-color .3s, color .3s
+      margin: 0 15px
+      position: absolute
+      top: 50%
+      left: 0
+      transition: background-color .3s, color .3s, transform .3s
+      transform: translateY(150%)
       &:hover
         background-color: $main_color
         color: #ffffff
@@ -134,14 +142,14 @@ header
       a
         line-height: 80px
     .contact
-      justify-content: center
-      height: 100%
       .phones
-        margin: auto 0
-        transform: translateY(-100px)
-        display: none
+        transform: translateY(-200%)
+        transition-delay: .0s
+        transition-property: transform
       .link-modal
-        display: inline-block
+        transition-delay: .3s, 0s, 0s
+        transition-property: transform, background-color, color
+        transform: translateY(-50%)
 
 
 main
@@ -487,6 +495,7 @@ main
           width: 100%
           border: none
           font-size: 18px
+          outline: none
         input[type='text'], input[type='email']
           border: none
           display: block
@@ -560,6 +569,7 @@ main
           color: #c0c0c0
         textarea
           resize: none
+          outline: none
           width: 100%
           border: none
           display: block
